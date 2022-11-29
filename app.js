@@ -71,6 +71,34 @@ const Admin = mongoose.model("admin", adminSchema);
 // })
 
 
+app.get("/student", function (req, res) {
+    Student.findOne({ student_name: "rudransh" }, function (err, foundName) {
+        if (err) {
+            console.log(err)
+        } else {
+            if (foundName) {
+                res.send(foundName)
+            } else {
+                res.send("no user found")
+            }
+        }
+    })
+
+})
+
+app.get("/teacher", function (req, res) {
+    Teacher.find(function (err, foundTeacher) {
+        res.send(foundTeacher)
+    })
+})
+
+
+
+app.get("/admin", function (req, res) {
+    Admin.find(function (err, foundAdmin) {
+        res.send(foundAdmin)
+    })
+})
 
 
 
@@ -384,34 +412,7 @@ sajal.save()
 
 
 
-app.get("/student", function (req, res) {
-    Student.findOne({ student_name: "rudransh" }, function (err, foundName) {
-        if (err) {
-            console.log(err)
-        } else {
-            if (foundName) {
-                res.send(foundName)
-            } else {
-                res.send("no user found")
-            }
-        }
-    })
 
-})
-
-app.get("/teacher", function (req, res) {
-    Teacher.find(function (err, foundTeacher) {
-        res.send(foundTeacher)
-    })
-})
-
-
-
-app.get("/admin", function (req, res) {
-    Admin.find(function (err, foundAdmin) {
-        res.send(foundAdmin)
-    })
-})
 
 
 
